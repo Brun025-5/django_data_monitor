@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-API_URL = 'https://jsonplaceholder.typicode.com/posts'
+API_URL = 'http://brun025.pythonanywhere.com/landing/api/index/?format=json'
