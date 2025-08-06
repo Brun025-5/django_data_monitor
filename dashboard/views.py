@@ -5,12 +5,14 @@ from django.http import HttpResponse
 
 import requests
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 def get_avg_msg_length(response):
     total_length = sum([len(element['message']) for element in response.json().values()])
     total_responses = len(response.json())
     return round(total_length / total_responses, 1) if total_responses > 0 else 0
 
+@login_required
 def index(request):
     response = requests.get(settings.API_URL)
     posts = response.json()
