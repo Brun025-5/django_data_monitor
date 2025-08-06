@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from django.conf import settings
 import requests
 from datetime import datetime, timezone
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required
 def index(request):
 
     response = requests.get(settings.API_URL)  # URL de la API
