@@ -61,5 +61,5 @@ def index(request):
         'most_active_user': usuario_mas_activo,
         'oldest_user': oldest_user
     }
-
+    
     return render(request, 'dashboard/index.html', data)

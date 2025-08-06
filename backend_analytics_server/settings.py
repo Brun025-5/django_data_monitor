@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-import os
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@ah92-s_6@&@1_i=^d^pe5ih7m249ragjza=0e6x$yihoui4t1'
+
+SECRET_KEY = 'django-insecure-)j7@ld&68x_*$wjvwa!_q(9s=4k^^jl12zvp3(3+)9n=&6+)rq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -118,13 +119,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, STATIC_URL),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 API_URL = 'http://brun025.pythonanywhere.com/landing/api/index/?format=json'
