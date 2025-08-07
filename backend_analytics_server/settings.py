@@ -23,6 +23,7 @@ API_URL = 'https://davexat.pythonanywhere.com/landing/api/index/'
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = 'django-insecure-)j7@ld&68x_*$wjvwa!_q(9s=4k^^jl12zvp3(3+)9n=&6+)rq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -130,7 +131,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 LOGIN_URL = '/login/'
 
