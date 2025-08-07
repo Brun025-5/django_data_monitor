@@ -16,6 +16,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# API_URL = 'https://jsonplaceholder.typicode.com/posts'
+API_URL = 'https://davexat.pythonanywhere.com/landing/api/index/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -27,7 +29,9 @@ SECRET_KEY = 'django-insecure-)j7@ld&68x_*$wjvwa!_q(9s=4k^^jl12zvp3(3+)9n=&6+)rq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000"]
 
 
 # Application definition
@@ -128,4 +132,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-API_URL = 'http://brun025.pythonanywhere.com/landing/api/index/?format=json'
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'

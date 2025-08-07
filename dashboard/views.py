@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+
 import requests
 from datetime import datetime, timezone
 
-# Create your views here.
+def get_avg_msg_length(response):
+    total_length = sum([len(element['message']) for element in response.json().values()])
+    total_responses = len(response.json())
+    return round(total_length / total_responses, 1) if total_responses > 0 else 0
 
+@login_required
 def index(request):
-
-    response = requests.get(settings.API_URL)  # URL de la API
-    posts = response.json()  # Convertir la respuesta a JSON
-
-    # Número total de respuestas
+    response = requests.get(settings.API_URL)
+    posts = response.json()
     total_responses = len(posts)
 
     conteo_usuarios = {}
@@ -58,8 +61,10 @@ def index(request):
     data = {
         'title': "Landing Page' Dashboard",
         'total_responses': total_responses,
+        'avg_msg_length': get_avg_msg_length(response),
+        'posts': posts.values(),
         'most_active_user': usuario_mas_activo,
-        'oldest_user': oldest_user
+        'oldest_user': oldest_user,
     }
     
     return render(request, 'dashboard/index.html', data)
