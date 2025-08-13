@@ -5,15 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 import requests
 from datetime import datetime, timezone
-<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-=======
 from collections import defaultdict
 import json
 
 
->>>>>>> test
 @login_required
 def index(request):
     response = requests.get(settings.API_URL)
