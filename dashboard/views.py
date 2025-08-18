@@ -1,17 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
-
 import requests
 from datetime import datetime, timezone
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 from collections import defaultdict
 import json
 
 
 @login_required
+@permission_required('dashboard.index_viewer', raise_exception=True)
 def index(request):
     response = requests.get(settings.API_URL)
     posts = response.json()
