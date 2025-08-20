@@ -30,13 +30,14 @@ API_URL = 'https://davexat.pythonanywhere.com/landing/api/index/'
 SECRET_KEY = 'django-insecure-)j7@ld&68x_*$wjvwa!_q(9s=4k^^jl12zvp3(3+)9n=&6+)rq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
-    "https://localhost:8000"
+    "https://localhost:8000",
+    "https://*.up.railway.app",
 ]
 
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,6 +138,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, STATIC_URL),
 ]
+
+STATIC_ROOT = BASE_DIR / 'assets'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
